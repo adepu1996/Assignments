@@ -1,16 +1,23 @@
 echo "1Q. Write a program that takes a command-line argument n and prints a table of the powers of 2 that are less than or equal to 2^n.?"
-isPowerOf2 () {
-    local n=$1 i=0
-    for ((; n>1; n/=2, i++)); do :; done
-    (($1 - (2 ** $i) == 0))
-}
 
-for n in {1..100}; 
+echo "enter number to print power of 2^n:"
+read n
+x=2
+i=1
+while [[ $i -lt $n && $n -gt 0 ]]
 do
- isPowerOf2 $n && echo $n; 
+echo "$x * $i= $(( $x ** $i ))"
+i=`expr $i + 1`
+echo "power of numbers are: $(( $x ** $i )) ";
+pow=$(( $x ** $i ))
+echo $pow
+if (( $pow == 256 ))
+then 
+break;
+fi
 done
 
-echo "****************************************************************"
+
 echo " 2Q. Write a program that takes a command-line argument n and prints the nth harmonic number. Harmonic Number is of the form?"
 echo "Enter a number : "
 read n
@@ -22,7 +29,7 @@ sum=1
         done
   echo $sum 
 
-echo "****************************************************************"
+
 echo " 3Q. Write a program that takes a input and determines if the number is a prime.?"
 echo  "Enter Number : "
 read n
@@ -36,7 +43,7 @@ do
   fi
 done
 echo "$n is a prime number."
-echo "****************************************************************"
+
 echo " 4Q. Extend the program to take a range of number as input and output the Prime
 Numbers in that range.?"
 
@@ -62,7 +69,7 @@ then
 echo $i 
 fi
 done
-echo "****************************************************************"
+
 
 echo "5. Write a program that computes a factorial of a number taken as input. 5 Factorial – 5! = 1 * 2 * 3 * 4 * 5  ?"
 
@@ -74,7 +81,7 @@ do
   factorial=$[ $factorial * $i ]
 done
 echo "The factorial of $num is $factorial"
-echo "****************************************************************"
+
 echo "6Q. Write a program to compute Factors of a number N using prime factorization method.
 Logic -> Traverse till i*i <= N instead of i <= N for efficiency.
 O/P -> Print the prime factors of number N.?"
